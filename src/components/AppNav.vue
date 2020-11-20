@@ -6,11 +6,23 @@
     <router-link to="/dashboard">
       Dashboard
     </router-link>
+    <router-link v-if="!loggedIn" to="/login" class="button">
+      Login
+    </router-link>
+    <router-link v-else to="/home" class="button">
+      Logout
+    </router-link>
   </div>
 </template>
 
 <script>
-export default {}
+import { authComputed } from '../vuex/helpers'
+
+export default {
+  computed: {
+    ...authComputed
+  }
+}
 </script>
 
 <style lang="scss" scoped>
